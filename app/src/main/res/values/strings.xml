@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PosSFA</string>
+    <string name="splash_name">Splash Activity</string>
 </resources>
