@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <dimen name="general_margin">20dp</dimen>
+    <dimen name="editText_height">30dp</dimen>
+    <dimen name="radius_size">55dp</dimen>
+    <dimen name="general_padding">20dp</dimen>
+
+</resources>
