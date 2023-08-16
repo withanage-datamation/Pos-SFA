@@ -14,20 +14,23 @@
         android:theme="@style/Theme.PosSFA"
         tools:targetApi="31">
         <activity
-            android:name=".activity.SplashActivity"
-            android:exported="true" >
-        </activity>
-
+            android:name=".activity.LoginActivity"
+            android:exported="true" />
         <activity
-            android:name="com.example.possfa.MainActivity"
+            android:name=".Login"
+            android:exported="true" />
+        <activity
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>
