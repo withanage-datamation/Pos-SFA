@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +19,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUserName, etPassword;
     private LinearLayout btnLogin;
     private Context context;
+    private SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,15 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         context = this;
+
+        sharedPref = getSharedPreferences("PoSSFA", Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
+
+        if (sharedPref.getString("isLoggedIn", "0").equals("1"))
+        {
+            navigateToNext();
+        }
+
 
         populateUi();
     }
@@ -50,15 +62,21 @@ public class LoginActivity extends AppCompatActivity {
                 else
                 {
                     Toast.makeText(context, "Login success", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context, MainActivity.class);
-                    startActivity(intent);
-                    //login stuff
-
+                    editor.putString("isLoggedIn", "1");
+                    editor.apply();
+                    navigateToNext();
                     finish();
                 }
             }
         });
     }
+
+    private void navigateToNext()
+    {
+        Intent intent = new Intent(context, MainActivity.class);
+        startActivity(intent);
+    }
+
 
     private Boolean isValidEditText(EditText editText)
     {
